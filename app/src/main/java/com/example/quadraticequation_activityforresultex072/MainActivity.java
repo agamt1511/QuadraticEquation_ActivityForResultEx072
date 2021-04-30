@@ -18,8 +18,11 @@ public class MainActivity extends AppCompatActivity {
     Random rnd;
     EditText et1, et2, et3;
     Button btn1, btn2;
-    float a, b, c;
+    TextView tv2;
+    float a, b, c, x1, x2;
+    int numOfResults = 0;
     String st;
+    Intent si;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +34,38 @@ public class MainActivity extends AppCompatActivity {
         et3 = (EditText) findViewById(R.id.et3);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
+        tv2 = (TextView) findViewById(R.id.tv2);
 
+        si = new Intent(this,SecondActivity.class);
         rnd = new Random();
-         goToSecond();
-         onActivityResult(1,RESULT_OK, );
+
     }
 
     protected void onActivityResult (int source, int good, @Nullable Intent data_back) {
-        if (data_back != null) {
-            a = data_back.getIntExtra("n",0);}}
+        if (source == 1) {
+            if (good == RESULT_OK) {
+                if (data_back != null) {
+                    x1 = data_back.getFloatExtra("x1",0);
+                    x2 = data_back.getFloatExtra("x2",0);
+                    numOfResults = data_back.getIntExtra("numOfResults", 0);
+                    switch (numOfResults) {
+                        case 0:
+                            tv2.setText("No Result");
+                            break;
+                        case 1:
+                            tv2.setText("Answer: " +"x = " + x1);
+                            break;
+                        case 2:
+                            tv2.setText("Answer: " +"x1 = " + x1 + " x2= " + x2);
+                            break;
+                    }
+
+                }
+            }
+        } }
 
 
     private void goToSecond() {
-        Intent si = new Intent(this,SecondActivity.class);
         si.putExtra("a",a);
         si.putExtra("b",b);
         si.putExtra("c",c);
@@ -55,20 +77,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "ERROR, You did not enter input", Toast.LENGTH_LONG).show();
         }
         else {
-        st = et1.getText().toString();
-        a = Float.parseFloat(st);
-        st = et2.getText().toString();
-        b = Float.parseFloat(st);
-        st = et3.getText().toString();
-        c = Float.parseFloat(st);
-        goToSecond();
+            st = et1.getText().toString();
+            a = Float.parseFloat(st);
+            st = et2.getText().toString();
+            b = Float.parseFloat(st);
+            st = et3.getText().toString();
+            c = Float.parseFloat(st);
+            goToSecond();
         }
-}
+    }
 
     public void randomNums(View view) {
-        a = rnd.nextFloat();
-        b = rnd.nextFloat();
-        c = rnd.nextFloat();
+        a = rnd.nextInt(Integer.MAX_VALUE);
+        b = rnd.nextInt(Integer.MAX_VALUE);
+        c = rnd.nextInt(Integer.MAX_VALUE);
 
         goToSecond();
     }

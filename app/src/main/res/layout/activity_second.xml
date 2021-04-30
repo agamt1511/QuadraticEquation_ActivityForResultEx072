@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="100"
                 android:onClick="goBack"
-                android:text="Button"
+                android:text="Go Back"
                 android:textColor="@color/purple_700"
                 app:backgroundTint="#DCE775" />
         </LinearLayout>
