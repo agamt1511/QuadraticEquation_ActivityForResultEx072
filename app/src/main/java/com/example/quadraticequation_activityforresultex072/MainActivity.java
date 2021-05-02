@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void randomNums(View view) {
-        a = rnd.nextInt(Integer.MAX_VALUE);
-        b = rnd.nextInt(Integer.MAX_VALUE);
-        c = rnd.nextInt(Integer.MAX_VALUE);
+        a = rnd.nextInt(10000)+1;
+        b = rnd.nextInt(10000)+1;
+        c = rnd.nextInt(10000)+1;
 
         goToSecond();
     }
