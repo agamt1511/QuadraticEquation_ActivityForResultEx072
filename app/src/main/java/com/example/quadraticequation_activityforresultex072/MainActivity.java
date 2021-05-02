@@ -89,8 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void randomNums(View view) {
         a = rnd.nextInt(10000)+1;
+        a = a - 5000;
         b = rnd.nextInt(10000)+1;
+        b = b - 5000;
         c = rnd.nextInt(10000)+1;
+        c = c - 5000;
 
         goToSecond();
     }
