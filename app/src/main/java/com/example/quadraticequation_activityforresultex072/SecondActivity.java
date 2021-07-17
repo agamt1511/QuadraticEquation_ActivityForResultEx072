@@ -34,19 +34,10 @@ public class SecondActivity extends AppCompatActivity {
         start();
     }
 
-    protected void onActivityResult (int source, int good, @Nullable Intent data_back) {
-        if (source == 2) {
-            if (good == RESULT_OK) {
-                if (data_back != null) {
-                    x1 = data_back.getIntExtra("x1", 0);
-                    x2 = data_back.getIntExtra("x2", 0);
-                }
-            }
-        }
-    }
-
     private void start() {
         ri = getIntent();
+        x1 = ri.getIntExtra("x1", 0);
+        x2 = ri.getIntExtra("x2", 0);
         a = ri.getFloatExtra("a",0);
         b = ri.getFloatExtra("b",0);
         c = ri.getFloatExtra("c",0);

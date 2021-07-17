@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                             tv2.setText("Answer: " +"x = " + x1);
                             break;
                         case 2:
-                            tv2.setText("Answer: " +"x1 = " + x1 + " x2= " + x2);
+                            tv2.setText("Answers: " +"x1 = " + x1 + " x2= " + x2);
                             break;
                     }
 
@@ -73,9 +73,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sameNums(View view) {
-        if ((TextUtils.isEmpty(et1.getText().toString())) || (TextUtils.isEmpty(et2.getText().toString())) || (TextUtils.isEmpty(et3.getText().toString()))) {
+        st = et1.getText().toString();
+        a = Float.parseFloat(st);
+        if ((TextUtils.isEmpty(et1.getText().toString())) || (TextUtils.isEmpty(et2.getText().toString())) || (TextUtils.isEmpty(et3.getText().toString()))){
             Toast.makeText(this, "ERROR, You did not enter input", Toast.LENGTH_LONG).show();
         }
+        else if (a==0){Toast.makeText(this, "ERROR! Change a to a non-zero number", Toast.LENGTH_LONG).show();}
         else {
             st = et1.getText().toString();
             a = Float.parseFloat(st);
@@ -87,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void randomNums(View view) {
         a = rnd.nextInt(10000)+1;
         a = a - 5000;
+        while (a == 0){a = rnd.nextInt(10000)+1;}
         b = rnd.nextInt(10000)+1;
         b = b - 5000;
         c = rnd.nextInt(10000)+1;
